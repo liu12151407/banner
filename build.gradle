@@ -1,7 +1,7 @@
 
 buildscript {
     ext {
-        kotlin_version = '1.7.0'
+        kotlin_version = '2.1.20'
     }
     repositories {
         maven { url 'https://maven.aliyun.com/repository/public/' }
@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
 
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:8.6.1'
         classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 

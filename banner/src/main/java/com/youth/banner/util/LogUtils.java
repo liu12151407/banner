@@ -2,12 +2,10 @@ package com.youth.banner.util;
 
 import android.util.Log;
 
-import com.youth.banner.BuildConfig;
-
 public class LogUtils {
     public static final String TAG = "banner_log";
 
-    private static final boolean DEBUG = BuildConfig.DEBUG;
+    private static final boolean DEBUG = true;
 
     public static void d(String msg) {
         if (DEBUG) {

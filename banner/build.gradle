@@ -5,11 +5,11 @@ apply plugin: 'signing'
 version = '2.2.3'
 
 android {
-    compileSdk 33
-
+    compileSdk 35
+    namespace 'com.youth.banner'
     defaultConfig {
-        minSdk 14
-        targetSdk 33
+        minSdk 21
+        targetSdk 35
         versionCode 202003
         versionName version
         consumerProguardFiles 'proguard-rules.pro'
@@ -26,7 +26,7 @@ android {
 }
 
 dependencies {
-    implementation "androidx.viewpager2:viewpager2:1.1.0-beta02"
+    implementation "androidx.viewpager2:viewpager2:1.1.0"
 }
 
 task androidSourcesJar(type: Jar) {
@@ -84,11 +84,11 @@ publishing {
             def releasesRepoUrl = "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
             def snapshotsRepoUrl = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
             url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-            credentials {
-                // 这里就是之前在 issues.sonatype.org 注册的账号
-                username sonatypeUsername
-                password sonatypePassword
-            }
+//            credentials {
+//                // 这里就是之前在 issues.sonatype.org 注册的账号
+//                username sonatypeUsername
+//                password sonatypePassword
+//            }
         }
     }
 }
