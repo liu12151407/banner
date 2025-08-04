@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.test.banner.R;
 import com.test.banner.adapter.ImageNetAdapter;
 import com.test.banner.bean.DataBean;
 import com.test.banner.databinding.BannerBinding;

@@ -3,6 +3,7 @@ package com.spring.usekotlin
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.spring.usekotlin.databinding.ActivityMainBinding
 import com.youth.banner.Banner
 import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder

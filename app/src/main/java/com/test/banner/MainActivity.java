@@ -15,7 +15,6 @@ import com.test.banner.adapter.ImageTitleNumAdapter;
 import com.test.banner.adapter.MultipleTypesAdapter;
 import com.test.banner.bean.DataBean;
 import com.test.banner.databinding.ActivityMainBinding;
-import com.youth.banner.indicator.DrawableIndicator;
 import com.test.banner.ui.ConstraintLayoutBannerActivity;
 import com.test.banner.ui.GalleryActivity;
 import com.test.banner.ui.RecyclerViewBannerActivity;
@@ -30,7 +29,6 @@ import com.youth.banner.config.BannerConfig;
 import com.youth.banner.config.IndicatorConfig;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.indicator.RoundLinesIndicator;
-import com.youth.banner.listener.OnPageChangeListener;
 import com.youth.banner.util.BannerUtils;
 import com.youth.banner.util.LogUtils;
 
