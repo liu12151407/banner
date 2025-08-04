@@ -12,13 +12,14 @@ import androidx.fragment.app.Fragment;
 import com.test.banner.R;
 import com.test.banner.adapter.ImageNetAdapter;
 import com.test.banner.bean.DataBean;
+import com.test.banner.databinding.BannerBinding;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.RectangleIndicator;
 import com.youth.banner.util.BannerUtils;
 
 public class BannerFragment extends Fragment {
 
-    private BannerFragmentBinding binding;
+    private BannerBinding binding;
     private Banner banner;
 
     public static Fragment newInstance() {
@@ -28,7 +29,7 @@ public class BannerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = BannerFragmentBinding.inflate(inflater, container, false);
+        binding = BannerBinding.inflate(inflater, container, false);
         View view = binding.getRoot();
 
         // 初始化视图
