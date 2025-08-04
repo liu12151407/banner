@@ -8,9 +8,10 @@ import com.youth.banner.adapter.BannerImageAdapter
 import com.youth.banner.holder.BannerImageHolder
 import com.youth.banner.indicator.CircleIndicator
 import com.youth.banner.indicator.RoundLinesIndicator
-import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
 
     var imageUrls = listOf(
             "https://img.zcool.cn/community/01b72057a7e0790000018c1bf4fce0.png",
@@ -21,9 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         //使用默认的图片适配器
-        var banner = (bannerLayout1 as Banner<String, BannerImageAdapter<String>>)
+        var banner = (binding.bannerLayout1 as Banner<String, BannerImageAdapter<String>>)
         banner.apply {
             addBannerLifecycleObserver(this@MainActivity)
             setIndicator(CircleIndicator(this@MainActivity))
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
 
         //使用自定义适配器，更多api方法自己尝试
-        var banner2 = (bannerLayout2 as Banner<String, ImageAdapter>)
+        var banner2 = (binding.bannerLayout2 as Banner<String, ImageAdapter>)
         banner2.apply {
             addBannerLifecycleObserver(this@MainActivity)
             setBannerRound(20f)

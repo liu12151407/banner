@@ -45,6 +45,10 @@
                     android:id="@+id/style_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="图片"
+                    android:onClick="styleImageClick" />"@+id/style_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="图片" />
 
                 <Button
@@ -52,14 +56,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/style_image"
-                    android:text="图片+标题+指示器" />
+                    android:text="图片+标题+指示器"
+                    android:onClick="styleImageTitleClick" />
 
                 <Button
                     android:id="@+id/style_image_title_num"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/style_image_title"
-                    android:text="图片+标题+数字" />
+                    android:text="图片+标题+数字"
+                    android:onClick="styleImageTitleNumClick" />
 
                 <Button
                     android:id="@+id/style_multiple"
@@ -67,7 +73,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/style_image"
                     android:text="多类型UI"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="styleMultipleClick" />
 
                 <Button
                     android:id="@+id/style_net_image"
@@ -75,7 +82,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/style_image"
                     android:layout_toRightOf="@+id/style_multiple"
-                    android:text="网络图片" />
+                    android:text="网络图片"
+                    android:onClick="styleNetImageClick" />
 
                 <Button
                     android:id="@+id/change_indicator"
@@ -83,7 +91,8 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/style_net_image"
                     android:layout_below="@+id/style_image_title_num"
-                    android:text="外部指示器" />
+                    android:text="外部指示器"
+                    android:onClick="changeIndicatorClick" />
 
 
                 <Button
@@ -92,7 +101,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/change_indicator"
                     android:text="画廊,魅族效果,Drawable指示器"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="rvBannerClick" />
 
                 <Button
                     android:id="@+id/topLine"
@@ -100,7 +110,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/gallery"
                     android:text="用banner实现类似淘宝头条的效果"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="topLineClick" />
 
                 <Button
                     android:id="@+id/rv_banner"
@@ -108,7 +119,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/topLine"
                     android:text="RecyclerView嵌套banner"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="rvBannerClick" />
 
                 <Button
                     android:id="@+id/cl_banner"
@@ -116,7 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/rv_banner"
                     android:text="ConstraintLayout嵌套banner"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="clBannerClick" />
 
                 <Button
                     android:id="@+id/vp_banner"
@@ -124,7 +137,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/cl_banner"
                     android:text="viewpaer2+fragment+RecyclerView嵌套banner"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="vpBannerClick" />
 
                 <Button
                     android:id="@+id/banner_video"
@@ -132,7 +146,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/vp_banner"
                     android:text="仿淘宝商品详情banner"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="bannerVideoClick" />
 
                 <Button
                     android:id="@+id/banner_tv"
@@ -140,7 +155,8 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/banner_video"
                     android:text="测试在tv中，遥控切换banner"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:onClick="bannerTvClick" />
             </RelativeLayout>
         </androidx.core.widget.NestedScrollView>
     </RelativeLayout>

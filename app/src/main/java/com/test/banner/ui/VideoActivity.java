@@ -8,6 +8,7 @@ import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer;
 import com.test.banner.R;
 import com.test.banner.adapter.MultipleTypesAdapter;
 import com.test.banner.bean.DataBean;
+import com.test.banner.databinding.ActivityVideoBinding;
 import com.test.banner.indicator.NumIndicator;
 import com.test.banner.viewholder.VideoHolder;
 import com.youth.banner.Banner;
@@ -16,22 +17,23 @@ import com.youth.banner.listener.OnPageChangeListener;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * 仿淘宝商品详情，banner第一个放视频,然后首尾不能自己滑动，加上自定义数字指示器
  */
 public class VideoActivity extends AppCompatActivity {
-    @BindView(R.id.banner)
-    Banner banner;
+    private ActivityVideoBinding binding;
+    private Banner banner;
     StandardGSYVideoPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_video);
-        ButterKnife.bind(this);
+        binding = ActivityVideoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // 初始化视图
+        banner = binding.banner;
 
         banner.addBannerLifecycleObserver(this)
                 .setAdapter(new MultipleTypesAdapter(this, DataBean.getTestDataVideo()))

@@ -9,24 +9,26 @@ import android.view.KeyEvent;
 import com.test.banner.R;
 import com.test.banner.adapter.ImageAdapter;
 import com.test.banner.bean.DataBean;
+import com.test.banner.databinding.ActivityTVBinding;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.util.BannerUtils;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class TVActivity extends AppCompatActivity {
 
     private static final String TAG = "banner_log";
-    @BindView(R.id.banner)
-    Banner banner;
+    private ActivityTVBinding binding;
+    private Banner banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_t_v);
-        ButterKnife.bind(this);
+        binding = ActivityTVBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // 初始化视图
+        banner = binding.banner;
+
         banner.setAdapter(new ImageAdapter(DataBean.getTestData()));
         banner.setIndicator(new CircleIndicator(this));
         banner.isAutoLoop(false);

@@ -16,13 +16,10 @@ import com.youth.banner.Banner;
 import com.youth.banner.indicator.RectangleIndicator;
 import com.youth.banner.util.BannerUtils;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class BannerFragment extends Fragment {
 
-    @BindView(R.id.banner)
-    Banner banner;
+    private BannerFragmentBinding binding;
+    private Banner banner;
 
     public static Fragment newInstance() {
         return new BannerFragment();
@@ -31,8 +28,12 @@ public class BannerFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.banner, container, false);
-        ButterKnife.bind(this, view);
+        binding = BannerFragmentBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        // 初始化视图
+        banner = binding.banner;
+
         return view;
     }
 

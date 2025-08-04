@@ -14,6 +14,7 @@ import com.test.banner.adapter.ImageTitleAdapter;
 import com.test.banner.adapter.ImageTitleNumAdapter;
 import com.test.banner.adapter.MultipleTypesAdapter;
 import com.test.banner.bean.DataBean;
+import com.test.banner.databinding.ActivityMainBinding;
 import com.youth.banner.indicator.DrawableIndicator;
 import com.test.banner.ui.ConstraintLayoutBannerActivity;
 import com.test.banner.ui.GalleryActivity;
@@ -38,23 +39,22 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-
 public class MainActivity extends AppCompatActivity {
-    @BindView(R.id.banner)
-    Banner banner;
-    @BindView(R.id.indicator)
-    RoundLinesIndicator indicator;
-    @BindView(R.id.swipeRefresh)
-    SwipeRefreshLayout refresh;
+    private ActivityMainBinding binding;
+    private Banner banner;
+    private RoundLinesIndicator indicator;
+    private SwipeRefreshLayout refresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // 初始化视图
+        banner = binding.banner;
+        indicator = binding.indicator;
+        refresh = binding.swipeRefresh;
 
         List<DataBean> datas =  DataBean.getTestData2();
 
@@ -99,9 +99,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.style_image, R.id.style_image_title, R.id.style_image_title_num, R.id.style_multiple,
-            R.id.style_net_image, R.id.change_indicator, R.id.rv_banner, R.id.cl_banner, R.id.vp_banner,
-            R.id.banner_video, R.id.banner_tv, R.id.gallery, R.id.topLine})
     public void click(View view) {
         indicator.setVisibility(View.GONE);
         switch (view.getId()) {
@@ -180,5 +177,53 @@ public class MainActivity extends AppCompatActivity {
             default:
                 throw new IllegalStateException("Unexpected value: " + view.getId());
         }
+    }
+
+    public void styleImageClick(View view) {
+        click(view);
+    }
+
+    public void styleImageTitleClick(View view) {
+        click(view);
+    }
+
+    public void styleImageTitleNumClick(View view) {
+        click(view);
+    }
+
+    public void styleMultipleClick(View view) {
+        click(view);
+    }
+
+    public void styleNetImageClick(View view) {
+        click(view);
+    }
+
+    public void changeIndicatorClick(View view) {
+        click(view);
+    }
+
+    public void rvBannerClick(View view) {
+        click(view);
+    }
+
+    public void clBannerClick(View view) {
+        click(view);
+    }
+
+    public void vpBannerClick(View view) {
+        click(view);
+    }
+
+    public void bannerVideoClick(View view) {
+        click(view);
+    }
+
+    public void bannerTvClick(View view) {
+        click(view);
+    }
+
+    public void topLineClick(View view) {
+        click(view);
     }
 }

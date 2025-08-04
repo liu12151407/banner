@@ -7,30 +7,31 @@ import com.test.banner.R;
 import com.test.banner.adapter.ImageAdapter;
 import com.test.banner.adapter.ImageNetAdapter;
 import com.test.banner.bean.DataBean;
+import com.test.banner.databinding.ActivityGalleryBinding;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
 import com.youth.banner.indicator.DrawableIndicator;
 import com.youth.banner.transformer.AlphaPageTransformer;
 
 import androidx.appcompat.app.AppCompatActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    @BindView(R.id.banner1)
-    Banner mBanner1;
-    @BindView(R.id.banner2)
-    Banner mBanner2;
-    @BindView(R.id.indicator)
-    DrawableIndicator indicator;
+    private ActivityGalleryBinding binding;
+    private Banner mBanner1;
+    private Banner mBanner2;
+    private DrawableIndicator indicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gallery);
-        ButterKnife.bind(this);
+        binding = ActivityGalleryBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // 初始化视图
+        mBanner1 = binding.banner1;
+        mBanner2 = binding.banner2;
+        indicator = binding.indicator;
 
         /**
          * 画廊效果

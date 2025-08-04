@@ -14,17 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.banner.R;
 import com.test.banner.adapter.MyRecyclerViewAdapter;
+import com.test.banner.databinding.ActivityRecyclerviewBannerBinding;
 import com.test.banner.util.ParentRecyclerView;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class BannerListFragment extends Fragment {
     private static int index;
-    @BindView(R.id.net_rv)
-    RecyclerView recyclerView;
-    @BindView(R.id.text)
-    TextView text;
+    private ActivityRecyclerviewBannerBinding binding;
+    private RecyclerView recyclerView;
+    private TextView text;
 
     public static Fragment newInstance(int i) {
         index = i;
@@ -34,8 +31,13 @@ public class BannerListFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_recyclerview_banner, container, false);
-        ButterKnife.bind(this,view);
+        binding = ActivityRecyclerviewBannerBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+
+        // 初始化视图
+        recyclerView = binding.netRv;
+        text = binding.text;
+
         return view;
     }
 

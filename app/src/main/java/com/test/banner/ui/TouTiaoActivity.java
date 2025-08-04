@@ -1,8 +1,6 @@
 package com.test.banner.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 import android.os.Bundle;
 
@@ -10,19 +8,23 @@ import com.google.android.material.snackbar.Snackbar;
 import com.test.banner.R;
 import com.test.banner.adapter.TopLineAdapter;
 import com.test.banner.bean.DataBean;
+import com.test.banner.databinding.ActivityTouTiaoBinding;
 import com.youth.banner.Banner;
 import com.youth.banner.transformer.ZoomOutPageTransformer;
 import com.youth.banner.util.LogUtils;
 
 public class TouTiaoActivity extends AppCompatActivity {
-    @BindView(R.id.banner)
-    Banner banner;
+    private ActivityTouTiaoBinding binding;
+    private Banner banner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tou_tiao);
-        ButterKnife.bind(this);
+        binding = ActivityTouTiaoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // 初始化视图
+        banner = binding.banner;
 
         //实现1号店和淘宝头条类似的效果
         banner.setAdapter(new TopLineAdapter(DataBean.getTestData2()))
