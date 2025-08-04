@@ -101,81 +101,68 @@ public class MainActivity extends AppCompatActivity {
 
     public void click(View view) {
         indicator.setVisibility(View.GONE);
-        switch (view.getId()) {
-            case R.id.style_image:
-                refresh.setEnabled(true);
-                banner.setAdapter(new ImageAdapter(DataBean.getTestData()));
-                banner.setIndicator(new CircleIndicator(this));
-                banner.setIndicatorGravity(IndicatorConfig.Direction.CENTER);
-                break;
-            case R.id.style_image_title:
-                refresh.setEnabled(true);
-                banner.setAdapter(new ImageTitleAdapter(DataBean.getTestData()));
-                banner.setIndicator(new CircleIndicator(this));
-                banner.setIndicatorGravity(IndicatorConfig.Direction.RIGHT);
-                banner.setIndicatorMargins(new IndicatorConfig.Margins(0, 0,
-                        BannerConfig.INDICATOR_MARGIN, BannerUtils.dp2px(12)));
-                break;
-            case R.id.style_image_title_num:
-                refresh.setEnabled(true);
-                //这里是将数字指示器和title都放在adapter中的，如果不想这样你也可以直接设置自定义的数字指示器
-                banner.setAdapter(new ImageTitleNumAdapter(DataBean.getTestData()));
-                banner.removeIndicator();
-                break;
-            case R.id.style_multiple:
-                refresh.setEnabled(true);
-                banner.setIndicator(new CircleIndicator(this));
-                banner.setAdapter(new MultipleTypesAdapter(this, DataBean.getTestData()));
-                break;
-            case R.id.style_net_image:
-                refresh.setEnabled(false);
-                //方法一：使用自定义图片适配器
+        int id = view.getId();
+        if (id == R.id.style_image) {
+            refresh.setEnabled(true);
+            banner.setAdapter(new ImageAdapter(DataBean.getTestData()));
+            banner.setIndicator(new CircleIndicator(this));
+            banner.setIndicatorGravity(IndicatorConfig.Direction.CENTER);
+        } else if (id == R.id.style_image_title) {
+            refresh.setEnabled(true);
+            banner.setAdapter(new ImageTitleAdapter(DataBean.getTestData()));
+            banner.setIndicator(new CircleIndicator(this));
+            banner.setIndicatorGravity(IndicatorConfig.Direction.RIGHT);
+            banner.setIndicatorMargins(new IndicatorConfig.Margins(0, 0,
+                    BannerConfig.INDICATOR_MARGIN, BannerUtils.dp2px(12)));
+        } else if (id == R.id.style_image_title_num) {
+            refresh.setEnabled(true);
+            //这里是将数字指示器和title都放在adapter中的，如果不想这样你也可以直接设置自定义的数字指示器
+            banner.setAdapter(new ImageTitleNumAdapter(DataBean.getTestData()));
+            banner.removeIndicator();
+        } else if (id == R.id.style_multiple) {
+            refresh.setEnabled(true);
+            banner.setIndicator(new CircleIndicator(this));
+            banner.setAdapter(new MultipleTypesAdapter(this, DataBean.getTestData()));
+        } else if (id == R.id.style_net_image) {
+            refresh.setEnabled(false);
+            //方法一：使用自定义图片适配器
 //                banner.setAdapter(new ImageNetAdapter(DataBean.getTestData3()));
 
-                //方法二：使用自带的图片适配器
-                banner.setAdapter(new BannerImageAdapter<DataBean>(DataBean.getTestData3()) {
-                    @Override
-                    public void onBindView(BannerImageHolder holder, DataBean data, int position, int size) {
-                        //图片加载自己实现
-                        Glide.with(holder.itemView)
-                                .load(data.imageUrl)
-                                .thumbnail(Glide.with(holder.itemView).load(R.drawable.loading))
-                                .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
-                                .into(holder.imageView);
-                    }
-                });
-                banner.setIndicator(new RoundLinesIndicator(this));
-                banner.setIndicatorSelectedWidth(BannerUtils.dp2px(15));
-                break;
-            case R.id.change_indicator:
-                indicator.setVisibility(View.VISIBLE);
-                //在布局文件中使用指示器，这样更灵活
-                banner.setIndicator(indicator, false);
-                banner.setIndicatorSelectedWidth(BannerUtils.dp2px(15));
-                break;
-            case R.id.gallery:
-                startActivity(new Intent(this, GalleryActivity.class));
-                break;
-            case R.id.rv_banner:
-                startActivity(new Intent(this, RecyclerViewBannerActivity.class));
-                break;
-            case R.id.cl_banner:
-                startActivity(new Intent(this, ConstraintLayoutBannerActivity.class));
-                break;
-            case R.id.vp_banner:
-                startActivity(new Intent(this, Vp2FragmentRecyclerviewActivity.class));
-                break;
-            case R.id.banner_video:
-                startActivity(new Intent(this, VideoActivity.class));
-                break;
-            case R.id.banner_tv:
-                startActivity(new Intent(this, TVActivity.class));
-                break;
-            case R.id.topLine:
-                startActivity(new Intent(this, TouTiaoActivity.class));
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + view.getId());
+            //方法二：使用自带的图片适配器
+            banner.setAdapter(new BannerImageAdapter<DataBean>(DataBean.getTestData3()) {
+                @Override
+                public void onBindView(BannerImageHolder holder, DataBean data, int position, int size) {
+                    //图片加载自己实现
+                    Glide.with(holder.itemView)
+                            .load(data.imageUrl)
+                            .thumbnail(Glide.with(holder.itemView).load(R.drawable.loading))
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
+                            .into(holder.imageView);
+                }
+            });
+            banner.setIndicator(new RoundLinesIndicator(this));
+            banner.setIndicatorSelectedWidth(BannerUtils.dp2px(15));
+        } else if (id == R.id.change_indicator) {
+            indicator.setVisibility(View.VISIBLE);
+            //在布局文件中使用指示器，这样更灵活
+            banner.setIndicator(indicator, false);
+            banner.setIndicatorSelectedWidth(BannerUtils.dp2px(15));
+        } else if (id == R.id.gallery) {
+            startActivity(new Intent(this, GalleryActivity.class));
+        } else if (id == R.id.rv_banner) {
+            startActivity(new Intent(this, RecyclerViewBannerActivity.class));
+        } else if (id == R.id.cl_banner) {
+            startActivity(new Intent(this, ConstraintLayoutBannerActivity.class));
+        } else if (id == R.id.vp_banner) {
+            startActivity(new Intent(this, Vp2FragmentRecyclerviewActivity.class));
+        } else if (id == R.id.banner_video) {
+            startActivity(new Intent(this, VideoActivity.class));
+        } else if (id == R.id.banner_tv) {
+            startActivity(new Intent(this, TVActivity.class));
+        } else if (id == R.id.topLine) {
+            startActivity(new Intent(this, TouTiaoActivity.class));
+        } else {
+            throw new IllegalStateException("Unexpected value: " + id);
         }
     }
 
