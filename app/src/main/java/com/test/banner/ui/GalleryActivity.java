@@ -20,7 +20,6 @@ public class GalleryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityGalleryBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         // 初始化视图
         mBanner1 = binding.banner1;
         /**
@@ -30,8 +29,6 @@ public class GalleryActivity extends AppCompatActivity {
         mBanner1.setIndicator(new CircleIndicator(this));
         //添加画廊效果
         mBanner1.setBannerGalleryEffect(50, 10);
-        // 设置预加载页面数量为10
-        mBanner1.getViewPager2().setOffscreenPageLimit(10);
         //(可以和其他PageTransformer组合使用，比如AlphaPageTransformer，注意但和其他带有缩放的PageTransformer会显示冲突)
         //添加透明效果(画廊配合透明效果更棒)
         mBanner1.addPageTransformer(new AlphaPageTransformer());
