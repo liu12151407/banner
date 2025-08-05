@@ -1,16 +1,12 @@
 package com.test.banner.ui;
 
 import android.os.Bundle;
-import android.view.View;
 
-import com.test.banner.R;
 import com.test.banner.adapter.ImageAdapter;
-import com.test.banner.adapter.ImageNetAdapter;
 import com.test.banner.bean.DataBean;
 import com.test.banner.databinding.ActivityGalleryBinding;
 import com.youth.banner.Banner;
 import com.youth.banner.indicator.CircleIndicator;
-import com.youth.banner.indicator.DrawableIndicator;
 import com.youth.banner.transformer.AlphaPageTransformer;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,8 +15,6 @@ public class GalleryActivity extends AppCompatActivity {
 
     private ActivityGalleryBinding binding;
     private Banner mBanner1;
-    private DrawableIndicator indicator;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
