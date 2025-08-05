@@ -17,17 +17,25 @@ import com.youth.banner.R;
 
 
 /**
- * Drawable指示器
+ * Drawable指示器，继承自BaseIndicator
+ * 通过使用Bitmap图片来实现指示器效果
  */
 public class DrawableIndicator extends BaseIndicator {
+    /**
+     * 默认状态下的Bitmap
+     */
     private Bitmap normalBitmap;
+    
+    /**
+     * 选中状态下的Bitmap
+     */
     private Bitmap selectedBitmap;
 
     /**
      * 实例化Drawable指示器 ，也可以通过自定义属性设置
-     * @param context
-     * @param normalResId
-     * @param selectedResId
+     * @param context 上下文
+     * @param normalResId 默认状态下的图片资源ID
+     * @param selectedResId 选中状态下的图片资源ID
      */
     public DrawableIndicator(Context context, @DrawableRes int normalResId, @DrawableRes int selectedResId) {
         super(context);
@@ -35,14 +43,29 @@ public class DrawableIndicator extends BaseIndicator {
         selectedBitmap = BitmapFactory.decodeResource(getResources(), selectedResId);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     */
     public DrawableIndicator(Context context) {
         this(context, null);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     */
     public DrawableIndicator(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     * @param defStyleAttr 默认样式属性
+     */
     public DrawableIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.DrawableIndicator);
@@ -54,6 +77,11 @@ public class DrawableIndicator extends BaseIndicator {
         }
     }
 
+    /**
+     * 测量指示器尺寸
+     * @param widthMeasureSpec 宽度测量规格
+     * @param heightMeasureSpec 高度测量规格
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -65,6 +93,10 @@ public class DrawableIndicator extends BaseIndicator {
                 Math.max(normalBitmap.getHeight(), selectedBitmap.getHeight()));
     }
 
+    /**
+     * 绘制指示器
+     * @param canvas 画布
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

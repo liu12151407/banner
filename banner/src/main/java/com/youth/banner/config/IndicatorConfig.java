@@ -12,34 +12,66 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class IndicatorConfig {
 
-    // 指示器数量
+    /**
+     * 指示器数量
+     */
     private int indicatorSize;
-    // 当前位置
+    
+    /**
+     * 当前位置
+     */
     private int currentPosition;
-    // 指示器对齐方式
+    
+    /**
+     * 指示器对齐方式
+     */
     private int gravity = Direction.CENTER;
-    // 指示器间距
+    
+    /**
+     * 指示器间距
+     */
     private int indicatorSpace = BannerConfig.INDICATOR_SPACE;
-    // 指示器正常宽度
+    
+    /**
+     * 指示器正常宽度
+     */
     private int normalWidth = BannerConfig.INDICATOR_NORMAL_WIDTH;
-    // 指示器选中宽度
+    
+    /**
+     * 指示器选中宽度
+     */
     private int selectedWidth = BannerConfig.INDICATOR_SELECTED_WIDTH;
-    // 指示器正常颜色
+    
+    /**
+     * 指示器正常颜色
+     */
     @ColorInt
     private int normalColor = BannerConfig.INDICATOR_NORMAL_COLOR;
-    // 指示器选中颜色
+    
+    /**
+     * 指示器选中颜色
+     */
     @ColorInt
     private int selectedColor = BannerConfig.INDICATOR_SELECTED_COLOR;
 
-    // 指示器圆角半径
+    /**
+     * 指示器圆角半径
+     */
     private int radius = BannerConfig.INDICATOR_RADIUS;
-    // 指示器高度
+    
+    /**
+     * 指示器高度
+     */
     private int height = BannerConfig.INDICATOR_HEIGHT;
 
-    // 指示器边距
+    /**
+     * 指示器边距
+     */
     private Margins margins;
 
-    // 是否将指示器添加到banner上
+    /**
+     * 是否将指示器添加到banner上
+     */
     private boolean attachToBanner = true;
 
     /**
@@ -49,11 +81,19 @@ public class IndicatorConfig {
     @IntDef({Direction.LEFT, Direction.CENTER, Direction.RIGHT})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Direction {
-        // 左对齐
+        /**
+         * 左对齐
+         */
         int LEFT = 0;
-        // 居中对齐
+        
+        /**
+         * 居中对齐
+         */
         int CENTER = 1;
-        // 右对齐
+        
+        /**
+         * 右对齐
+         */
         int RIGHT = 2;
     }
 
@@ -62,13 +102,24 @@ public class IndicatorConfig {
      * 用于设置指示器四个方向的边距
      */
     public static class Margins {
-        // 左边距
+        /**
+         * 左边距
+         */
         public int leftMargin;
-        // 上边距
+        
+        /**
+         * 上边距
+         */
         public int topMargin;
-        // 右边距
+        
+        /**
+         * 右边距
+         */
         public int rightMargin;
-        // 下边距
+        
+        /**
+         * 下边距
+         */
         public int bottomMargin;
 
         /**

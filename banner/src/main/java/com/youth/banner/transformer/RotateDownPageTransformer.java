@@ -4,22 +4,45 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 
+/**
+ * 向下旋转页面变换器，继承自BasePageTransformer
+ * 通过围绕页面底部中心点旋转来实现页面切换动画效果
+ */
 public class RotateDownPageTransformer extends BasePageTransformer {
+    /**
+     * 默认最大旋转角度
+     */
     private static final float DEFAULT_MAX_ROTATE = 15.0f;
+    
+    /**
+     * 最大旋转角度
+     */
     private float mMaxRotate = DEFAULT_MAX_ROTATE;
 
+    /**
+     * 构造方法，使用默认最大旋转角度
+     */
     public RotateDownPageTransformer() {
     }
 
+    /**
+     * 构造方法
+     * @param maxRotate 最大旋转角度
+     */
     public RotateDownPageTransformer(float maxRotate) {
         mMaxRotate = maxRotate;
     }
 
+    /**
+     * 变换页面
+     * @param view 页面视图
+     * @param position 位置
+     */
     @Override
     public void transformPage(@NonNull View view, float position) {
         if (position < -1) {
             // [-Infinity,-1)
-            // This page is way off-screen to the left.
+            // 这个页面在屏幕左侧很远的位置
             view.setRotation(mMaxRotate * -1);
             view.setPivotX(view.getWidth());
             view.setPivotY(view.getHeight());
@@ -36,7 +59,7 @@ public class RotateDownPageTransformer extends BasePageTransformer {
             }
         } else {
             // (1,+Infinity]
-            // This page is way off-screen to the right.
+            // 这个页面在屏幕右侧很远的位置
             view.setRotation(mMaxRotate);
             view.setPivotX(view.getWidth() * 0);
             view.setPivotY(view.getHeight());

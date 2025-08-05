@@ -9,17 +9,40 @@ import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
+/**
+ * 缩放页面变换器，继承自BasePageTransformer
+ * 通过改变页面的缩放来实现页面切换动画效果
+ */
 public class ScaleInTransformer extends BasePageTransformer {
+    /**
+     * 默认最小缩放值
+     */
     private static final float DEFAULT_MIN_SCALE = 0.85f;
+    
+    /**
+     * 最小缩放值
+     */
     private float mMinScale = DEFAULT_MIN_SCALE;
 
+    /**
+     * 构造方法，使用默认最小缩放值
+     */
     public ScaleInTransformer() {
     }
 
+    /**
+     * 构造方法
+     * @param minScale 最小缩放值
+     */
     public ScaleInTransformer(float minScale) {
         this.mMinScale = minScale;
     }
 
+    /**
+     * 变换页面
+     * @param view 页面视图
+     * @param position 位置
+     */
     @Override
     public void transformPage(@NonNull View view, float position) {
         int pageWidth = view.getWidth();
@@ -28,12 +51,12 @@ public class ScaleInTransformer extends BasePageTransformer {
         view.setPivotY(pageHeight / 2);
         view.setPivotX(pageWidth / 2);
         if (position < -1) { // [-Infinity,-1)
-            // This page is way off-screen to the left.
+            // 这个页面在屏幕左侧很远的位置
             view.setScaleX(mMinScale);
             view.setScaleY(mMinScale);
             view.setPivotX(pageWidth);
         } else if (position <= 1) { // [-1,1]
-            // Modify the default slide transition to shrink the page as well
+            // 修改默认的滑动过渡以同时缩小页面
             if (position < 0) //1-2:1[0,-1] ;2-1:1[-1,0]
             {
 

@@ -13,6 +13,10 @@ import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
+/**
+ * Banner工具类
+ * 提供各种辅助方法，如位置计算、视图创建、单位转换和圆角设置等
+ */
 public class BannerUtils {
 
     /**
@@ -21,7 +25,7 @@ public class BannerUtils {
      * @param isIncrease 首尾是否有增加
      * @param position  当前位置
      * @param realCount 真实数量
-     * @return
+     * @return 真实位置
      */
     public static int getRealPosition(boolean isIncrease, int position, int realCount) {
         if (!isIncrease) {
@@ -41,14 +45,13 @@ public class BannerUtils {
     /**
      * 将布局文件转成view，这里为了适配viewpager2中高宽必须为match_parent
      *
-     * @param parent
-     * @param layoutId
-     * @return
+     * @param parent 父布局
+     * @param layoutId 布局资源ID
+     * @return 创建的视图
      */
     public static View getView(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
         View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        //这里判断高度和宽带是否都是match_parent
+        ViewGroup.LayoutParams params = view.getLayoutParams();n        //这里判断高度和宽带是否都是match_parent
         if (params.height != -1 || params.width != -1) {
             params.height = -1;
             params.width = -1;
@@ -57,6 +60,11 @@ public class BannerUtils {
         return view;
     }
 
+    /**
+     * 将dp单位转换为px单位
+     * @param dp dp值
+     * @return px值
+     */
     public static int dp2px(float dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
@@ -64,8 +72,8 @@ public class BannerUtils {
     /**
      * 设置view圆角
      *
-     * @param radius
-     * @return
+     * @param view 视图
+     * @param radius 圆角半径
      */
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public static void setBannerRound(View view,float radius) {

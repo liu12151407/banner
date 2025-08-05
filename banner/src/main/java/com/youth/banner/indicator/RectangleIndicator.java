@@ -8,27 +8,50 @@ import android.util.AttributeSet;
 import com.youth.banner.config.BannerConfig;
 
 /**
- * 矩形（条形）指示器
+ * 矩形（条形）指示器，继承自BaseIndicator
  * 1、可以设置选中和默认的宽度、指示器的圆角
  * 2、如果需要正方形将圆角设置为0，可将宽度和高度设置为一样
  * 3、如果不想选中时变长，可将选中的宽度和默认宽度设置为一样
  */
 public class RectangleIndicator extends BaseIndicator {
+    /**
+     * 矩形区域
+     */
     RectF rectF;
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     */
     public RectangleIndicator(Context context) {
         this(context, null);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     */
     public RectangleIndicator(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     * @param defStyleAttr 默认样式属性
+     */
     public RectangleIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         rectF = new RectF();
     }
 
+    /**
+     * 测量指示器尺寸
+     * @param widthMeasureSpec 宽度测量规格
+     * @param heightMeasureSpec 高度测量规格
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -42,6 +65,10 @@ public class RectangleIndicator extends BaseIndicator {
         setMeasuredDimension(space + normal + config.getSelectedWidth(), config.getHeight());
     }
 
+    /**
+     * 绘制指示器
+     * @param canvas 画布
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

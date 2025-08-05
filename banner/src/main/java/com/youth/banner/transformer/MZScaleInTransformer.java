@@ -8,19 +8,40 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 /**
- * 内部实现魅族效果使用的，单独使用可能效果不一定好，自己可以尝试下看看是否满意，推荐使用ScaleInTransformer
+ * 魅族风格缩放页面变换器，继承自BasePageTransformer
+ * 实现类似魅族手机应用商店Banner的切换效果
+ * 注意：单独使用效果可能不理想，推荐使用ScaleInTransformer
  */
 public class MZScaleInTransformer extends BasePageTransformer {
+    /**
+     * 默认最小缩放值
+     */
     private static final float DEFAULT_MIN_SCALE = 0.85f;
+    
+    /**
+     * 最小缩放值
+     */
     private float mMinScale = DEFAULT_MIN_SCALE;
 
+    /**
+     * 构造方法，使用默认最小缩放值
+     */
     public MZScaleInTransformer() {
     }
 
+    /**
+     * 构造方法
+     * @param minScale 最小缩放值
+     */
     public MZScaleInTransformer(float minScale) {
         this.mMinScale = minScale;
     }
 
+    /**
+     * 变换页面
+     * @param view 页面视图
+     * @param position 位置
+     */
     @Override
     public void transformPage(@NonNull View view, float position) {
         ViewPager2 viewPager = requireViewPager(view);
@@ -59,6 +80,11 @@ public class MZScaleInTransformer extends BasePageTransformer {
 
     }
 
+    /**
+     * 获取ViewPager2实例
+     * @param page 页面视图
+     * @return ViewPager2实例
+     */
     private ViewPager2 requireViewPager(@NonNull View page) {
         ViewParent parent = page.getParent();
         ViewParent parentParent = parent.getParent();

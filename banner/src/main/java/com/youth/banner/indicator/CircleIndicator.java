@@ -5,28 +5,59 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 
 /**
- * 圆形指示器
+ * 圆形指示器，继承自BaseIndicator
  * 如果想要大小一样，可以将选中和默认设置成同样大小
  */
 public class CircleIndicator extends BaseIndicator {
+    /**
+     * 默认状态下的圆点半径
+     */
     private int mNormalRadius;
+    
+    /**
+     * 选中状态下的圆点半径
+     */
     private int mSelectedRadius;
+    
+    /**
+     * 最大圆点半径
+     */
     private int maxRadius;
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     */
     public CircleIndicator(Context context) {
         this(context, null);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     */
     public CircleIndicator(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     * @param defStyleAttr 默认样式属性
+     */
     public CircleIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mNormalRadius = config.getNormalWidth() / 2;
         mSelectedRadius = config.getSelectedWidth() / 2;
     }
 
+    /**
+     * 测量指示器尺寸
+     * @param widthMeasureSpec 宽度测量规格
+     * @param heightMeasureSpec 高度测量规格
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -44,6 +75,10 @@ public class CircleIndicator extends BaseIndicator {
         setMeasuredDimension(width, Math.max(config.getNormalWidth(), config.getSelectedWidth()));
     }
 
+    /**
+     * 绘制指示器
+     * @param canvas 画布
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

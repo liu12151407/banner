@@ -353,7 +353,11 @@ public class Banner<T, BA extends BannerAdapter<T, ? extends RecyclerView.ViewHo
         stop();
     }
 
-    class BannerOnPageChangeCallback extends ViewPager2.OnPageChangeCallback {
+    /**
+     * Banner主类，继承自FrameLayout，实现BannerLifecycleObserver接口
+     * 用于实现轮播图功能，支持无限循环、自动轮播、指示器、页面切换动画等特性
+     */
+    public class Banner<T, BA extends BannerAdapter> extends FrameLayout implements BannerLifecycleObserver {
         private int mTempPosition = INVALID_VALUE;
         private boolean isScrolled;
 

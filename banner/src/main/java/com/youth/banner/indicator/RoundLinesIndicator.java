@@ -10,21 +10,45 @@ import androidx.annotation.Nullable;
 
 import com.youth.banner.util.BannerUtils;
 
+/**
+ * 圆角线条指示器，继承自BaseIndicator
+ * 通过绘制圆角矩形来实现指示器效果
+ */
 public class RoundLinesIndicator extends BaseIndicator {
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     */
     public RoundLinesIndicator(Context context) {
         this(context, null);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     */
     public RoundLinesIndicator(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
+    /**
+     * 构造方法
+     * @param context 上下文
+     * @param attrs 属性集合
+     * @param defStyleAttr 默认样式属性
+     */
     public RoundLinesIndicator(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mPaint.setStyle(Paint.Style.FILL);
     }
 
+    /**
+     * 测量指示器尺寸
+     * @param widthMeasureSpec 宽度测量规格
+     * @param heightMeasureSpec 高度测量规格
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -33,6 +57,10 @@ public class RoundLinesIndicator extends BaseIndicator {
         setMeasuredDimension((int) (config.getSelectedWidth() * count), config.getHeight());
     }
 
+    /**
+     * 绘制指示器
+     * @param canvas 画布
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

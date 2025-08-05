@@ -18,20 +18,46 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+/**
+ * 轮播图适配器基类
+ * 用于管理轮播图的数据和视图
+ * @param <T> 数据类型
+ * @param <VH> ViewHolder类型
+ */
 public abstract class BannerAdapter<T, VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> implements IViewHolder<T, VH> {
+    /**
+     * 数据集合
+     */
     protected List<T> mDatas = new ArrayList<>();
+    
+    /**
+     * Banner点击事件监听器
+     */
     private OnBannerListener<T> mOnBannerListener;
+    
+    /**
+     * ViewHolder实例
+     */
     private VH mViewHolder;
+    
+    /**
+     * 增加的数量，用于实现无限轮播
+     */
     private int mIncreaseCount = BannerConfig.INCREASE_COUNT;
 
+    /**
+     * 构造函数
+     * 
+     * @param datas 初始数据集合
+     */
     public BannerAdapter(List<T> datas) {
         setDatas(datas);
     }
 
     /**
-     * 设置实体集合（可以在自己的adapter自定义，不一定非要使用）
-     *
-     * @param datas
+     * 设置实体集合
+     * 
+     * @param datas 数据集合
      */
     public void setDatas(List<T> datas) {
         if (datas == null) {
@@ -43,10 +69,10 @@ public abstract class BannerAdapter<T, VH extends RecyclerView.ViewHolder> exten
     }
 
     /**
-     * 获取指定的实体（可以在自己的adapter自定义，不一定非要使用）
-     *
-     * @param position 真实的position
-     * @return
+     * 获取指定位置的实体
+     * 
+     * @param position 真实的位置
+     * @return 数据实体
      */
     public T getData(int position) {
         if (position > mDatas.size()-1) {
@@ -56,10 +82,10 @@ public abstract class BannerAdapter<T, VH extends RecyclerView.ViewHolder> exten
     }
 
     /**
-     * 获取指定的实体（可以在自己的adapter自定义，不一定非要使用）
-     *
-     * @param position 这里传的position不是真实的，获取时转换了一次
-     * @return
+     * 获取指定位置的实体（转换后的位置）
+     * 
+     * @param position 转换后的位置
+     * @return 数据实体
      */
     public T getRealData(int position) {
         int realPosition = getRealPosition(position);
@@ -70,6 +96,12 @@ public abstract class BannerAdapter<T, VH extends RecyclerView.ViewHolder> exten
     }
 
 
+    /**
+     * 绑定ViewHolder数据
+     * 
+     * @param holder ViewHolder实例
+     * @param position 位置
+     */
     @Override
     public final void onBindViewHolder(@NonNull VH holder, int position) {
         mViewHolder = holder;
@@ -83,6 +115,13 @@ public abstract class BannerAdapter<T, VH extends RecyclerView.ViewHolder> exten
         }
     }
 
+    /**
+     * 创建ViewHolder
+     * 
+     * @param parent 父容器
+     * @param viewType 视图类型
+     * @return ViewHolder实例
+     */
     @NonNull
     @Override
     @SuppressWarnings("unchecked")
@@ -98,27 +137,58 @@ public abstract class BannerAdapter<T, VH extends RecyclerView.ViewHolder> exten
         return vh;
     }
 
+    /**
+     * 获取item数量
+     * 
+     * @return item数量
+     */
     @Override
     public int getItemCount() {
         return getRealCount() > 1 ? getRealCount() + mIncreaseCount : getRealCount();
     }
 
+    /**
+     * 获取真实的数据数量
+     * 
+     * @return 真实数据数量
+     */
     public int getRealCount() {
         return mDatas == null ? 0 : mDatas.size();
     }
 
+    /**
+     * 获取真实位置
+     * 
+     * @param position 位置
+     * @return 真实位置
+     */
     public int getRealPosition(int position) {
         return BannerUtils.getRealPosition(mIncreaseCount == BannerConfig.INCREASE_COUNT, position, getRealCount());
     }
 
+    /**
+     * 设置Banner点击事件监听器
+     * 
+     * @param listener 点击事件监听器
+     */
     public void setOnBannerListener(OnBannerListener<T> listener) {
         this.mOnBannerListener = listener;
     }
 
+    /**
+     * 获取ViewHolder实例
+     * 
+     * @return ViewHolder实例
+     */
     public VH getViewHolder() {
         return mViewHolder;
     }
 
+    /**
+     * 设置增加的数量
+     * 
+     * @param increaseCount 增加的数量
+     */
     public void setIncreaseCount(int increaseCount) {
         this.mIncreaseCount = increaseCount;
     }
