@@ -36,5 +36,4 @@ public class GalleryActivity extends AppCompatActivity {
         //添加透明效果(画廊配合透明效果更棒)
         mBanner1.addPageTransformer(new AlphaPageTransformer());
     }
-
 }
