@@ -20,8 +20,8 @@ public class ScrollSpeedManger extends LinearLayoutManager {
 
     /**
      * 构造函数
-     * 
-     * @param banner 关联的Banner实例
+     *
+     * @param banner              关联的Banner实例
      * @param linearLayoutManager 原始的LinearLayoutManager
      */
     public ScrollSpeedManger(Banner banner, LinearLayoutManager linearLayoutManager) {
@@ -32,10 +32,10 @@ public class ScrollSpeedManger extends LinearLayoutManager {
     /**
      * 平滑滚动到指定位置
      * 重写此方法来自定义滚动速度
-     * 
+     *
      * @param recyclerView RecyclerView实例
-     * @param state RecyclerView状态
-     * @param position 目标位置
+     * @param state        RecyclerView状态
+     * @param position     目标位置
      */
     @Override
     public void smoothScrollToPosition(RecyclerView recyclerView, RecyclerView.State state, int position) {
@@ -43,7 +43,7 @@ public class ScrollSpeedManger extends LinearLayoutManager {
             /**
              * 计算减速阶段的时间
              * 通过Banner的滚动时间来控制滚动速度
-             * 
+             *
              * @param dx 滚动距离
              * @return 滚动时间
              */
@@ -59,7 +59,7 @@ public class ScrollSpeedManger extends LinearLayoutManager {
     /**
      * 通过反射修改ViewPager2的布局管理器
      * 用于应用自定义的滚动速度管理器
-     * 
+     *
      * @param banner 关联的Banner实例
      */
     public static void reflectLayoutManager(Banner banner) {
@@ -91,7 +91,7 @@ public class ScrollSpeedManger extends LinearLayoutManager {
                 layoutManager.setAccessible(true);
                 layoutManager.set(mPageTransformerAdapter, speedManger);
             }
-            
+
             // 修改滚动事件适配器的布局管理器
             Field scrollEventAdapterField = ViewPager2.class.getDeclaredField("mScrollEventAdapter");
             scrollEventAdapterField.setAccessible(true);
