@@ -741,10 +741,8 @@ public class Banner<T, BA extends BannerAdapter<T, ? extends RecyclerView.ViewHo
 
     /**
      * 设置banner轮播方向
-     *
-     * @param orientation {@link Orientation}
      */
-    public Banner setOrientation(@Orientation int orientation) {
+    public Banner setOrientation(int orientation) {
         getViewPager2().setOrientation(orientation);
         return this;
     }
