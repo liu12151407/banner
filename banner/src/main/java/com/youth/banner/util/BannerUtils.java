@@ -51,7 +51,7 @@ public class BannerUtils {
      */
     public static View getView(@NonNull ViewGroup parent, @LayoutRes int layoutId) {
         View view = LayoutInflater.from(parent.getContext()).inflate(layoutId, parent, false);
-        ViewGroup.LayoutParams params = view.getLayoutParams();n        //这里判断高度和宽带是否都是match_parent
+        ViewGroup.LayoutParams params = view.getLayoutParams();       //这里判断高度和宽带是否都是match_parent
         if (params.height != -1 || params.width != -1) {
             params.height = -1;
             params.width = -1;
